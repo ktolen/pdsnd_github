@@ -2,7 +2,7 @@
 This project was created on August 11, 2020 and the README file was created on August 17, 2020.
 
 ### Project Title
-Udacity_bikeshare_project.py
+bikeshare.py
 
 ### Description
 This is an interactive program to explore the bikeshare data in three US cities: Washington, Chicago, and New York. The program determines the popular times of travel, popular stations and trips, details on trip duration and bike user information.
