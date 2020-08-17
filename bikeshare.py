@@ -36,7 +36,7 @@ def get_filters():
         if month in valid_months:
             break
         else:
-            print("That's not a valid answer. Please choose either a month among the choices or ALL.")
+            print("That's not a valid answer. Please choose a month among the choices or ALL.")
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     valid_days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday", "all"]
@@ -45,7 +45,7 @@ def get_filters():
         if day in valid_days:
             break
         else:
-            print("That's not a valid answer. Please choose either a day among the choices or ALL.")
+            print("That's not a valid answer. Please choose a day among the choices or ALL.")
 
     print('-'*40)
     return city, month, day
@@ -175,6 +175,24 @@ def user_stats(df):
     else:
         print("No gender and birth year data for Washington.")
         return user_types
+    
+def display_raw_data(df):
+  """
+    Asks user if they want to see 5 lines of raw data.
+    Returns the 5 lines of raw data if user inputs `yes`. Iterate until user response with a `no`
+
+    """
+
+    data = 0
+
+    while True:
+        answer = input('Would you like to see 5 lines of raw data? Enter yes or no: ')
+        if answer.lower() == 'yes':
+            print(df[data : data+5])
+            data += 5
+
+        else:
+            break
 
 def main():
     while True:
@@ -185,12 +203,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-
-        raw_data = input('\nWould you like to see the 5 records of raw data? Enter yes or no.\n')
-        if raw_data.lower() != 'yes':
-            pass
-        else:
-            print(df.head())
+        display_raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
